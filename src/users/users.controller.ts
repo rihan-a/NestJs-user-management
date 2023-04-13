@@ -14,7 +14,7 @@ export class UsersController {
   @Post()
   createUser(
     @Body('name') name: string,
-    @Body('age') age: snumber,
+    @Body('age') age: number,
     @Body('gender') gender: userGender,
     @Body('height') height: number,
     @Body('education') education: string,
@@ -22,5 +22,15 @@ export class UsersController {
     @Body('city') city: string,
   ) {
     console.log(name, age, gender, height, education, bio, city);
+
+    return this.usersService.createUser(
+      name,
+      age,
+      gender,
+      height,
+      education,
+      bio,
+      city,
+    );
   }
 }
