@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './user.model';
+import { User, userGender } from './user.model';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class UsersService {
   createUser(
     name: string,
     age: number,
-    gender: UserGender,
+    gender: userGender,
     height: number,
     education: string,
     bio: string,
@@ -29,5 +29,8 @@ export class UsersService {
       bio,
       city,
     };
+
+    this.users.push(User);
+    return User;
   }
 }
