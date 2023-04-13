@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { User } from './user.model';
 
 @Injectable()
 export class UsersService {
-  private users = ['Rihan', 'Ahmed'];
+  private users: User[] = [];
 
-  getAllUsers() {
+  getAllUsers(): User[] {
     return this.users;
   }
 }
