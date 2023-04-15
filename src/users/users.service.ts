@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User, userGender } from './user.model';
+import { User } from './user.model';
 import { v4 as uuidv4 } from 'uuid';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -31,5 +31,10 @@ export class UsersService {
 
     this.users.push(User);
     return User;
+  }
+
+  deleteUserById(id: string): string {
+    this.users = this.users.filter((user) => user.id !== id);
+    return 'User is deleted successfuly';
   }
 }
