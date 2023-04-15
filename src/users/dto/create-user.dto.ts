@@ -1,12 +1,12 @@
 import { userGender } from '../user.model';
 
 export class CreateUserDto {
-  id: string;
-  name: string;
-  age: number;
-  gender: userGender;
-  height: number;
-  education: string;
-  bio: string;
-  city: string;
+  readonly id: string;
+  readonly name: string;
+  readonly age: number;
+  readonly gender: userGender;
+  readonly height: number;
+  readonly education: string;
+  readonly bio: string;
+  readonly city: string;
 }
