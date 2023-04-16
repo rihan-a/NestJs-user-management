@@ -37,4 +37,10 @@ export class UsersService {
     this.users = this.users.filter((user) => user.id !== id);
     return 'User is deleted successfuly';
   }
+
+  updateUserNameById(id: string, name: string) {
+    const user = this.getUserById(id);
+    user.name = name;
+    return user;
+  }
 }
