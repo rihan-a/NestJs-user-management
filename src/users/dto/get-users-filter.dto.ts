@@ -1,4 +1,6 @@
+import { userGender } from '../user.model';
+
 export class getUsersFilterDto {
-  readonly age: number;
-  readonly search: string;
+  readonly gender?: userGender;
+  readonly search?: string;
 }
