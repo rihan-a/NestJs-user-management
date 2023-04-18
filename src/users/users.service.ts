@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from './user.model';
 import { v4 as uuidv4 } from 'uuid';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -40,8 +40,14 @@ export class UsersService {
     return users;
   }
 
+  // Get user by Id
   getUserById(id: string): User {
-    return this.users.find((user) => user.id === id);
+    const user = this.users.find((user) => user.id === id);
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+    return user;
   }
 
   createUser(CreateUserDto: CreateUserDto): User {
@@ -63,7 +69,9 @@ export class UsersService {
   }
 
   deleteUserById(id: string): string {
-    this.users = this.users.filter((user) => user.id !== id);
+    const userToDelete = this.getUserById(id);
+
+    this.users = this.users.filter((user) => user.id !== userToDelete.id);
     return 'User is deleted successfuly';
   }
 
