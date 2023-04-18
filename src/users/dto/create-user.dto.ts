@@ -1,5 +1,5 @@
-import { userGender } from '../user.model';
-import { IsNotEmpty } from 'class-validator';
+import { UserGender } from '../user.model';
+import { IsEnum, IsNotEmpty } from 'class-validator';
 
 export class CreateUserDto {
   readonly id: string;
@@ -10,7 +10,8 @@ export class CreateUserDto {
   readonly age: number;
 
   @IsNotEmpty()
-  readonly gender: userGender;
+  @IsEnum(UserGender)
+  readonly gender: UserGender;
 
   readonly height: number;
   readonly education: string;
